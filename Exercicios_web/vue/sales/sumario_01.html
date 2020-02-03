@@ -10,43 +10,11 @@
 
 <body>
 
-
+    
     <div id="app">
         <div class="container">
             <h1 class="mt-3"> {{ title }} </h1>
-
-            <table class="mt-5 table" v-if="salesByProduct">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(sale, index) in salesByProduct">
-                        <td># {{ index + 1 }} </td>
-                        <td> {{ sale.name }} </td>
-                        <td v-money="'R$'"> {{ sale.value }} </td
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr >
-                        <td>+</td>
-                        <td>Total</td>
-                        <td v-money="'R$'"> {{ calculateTotal(salesByProduct) }} </td>
-                    </tr>
-                </tfoot>
-
-            </table>
-
-
-
-
-
-
-
-<!--         <table class="mt-5 table">
+            <table class="mt-5 table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -66,7 +34,6 @@
                     </tr>
                 </tbody>
             </table>
-        -->
         </div>
     </div>
 
@@ -100,7 +67,7 @@
             computed:{
                 salesByProduct(){
                     if(!this.sales) return null
-                    const salesByProduct = this.sales.reduce((grouped, sale) => {
+                    const salesByProduct = this.sales.reduce((grouped, sales) => {
                         if( !grouped.hasOwnProperty(sale.name) ){
                             grouped[sale.name] = {
                                 name: sale.name,
